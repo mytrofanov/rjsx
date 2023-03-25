@@ -39,7 +39,7 @@ export function Rxjs(selector: string) {
                 y: clientY - top,
             }
         }),
-        pairwise<Position>()
+        pairwise<Position>() //return pair in array
     )
 
     mouseDown$.pipe(
