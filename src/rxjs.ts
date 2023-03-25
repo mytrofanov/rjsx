@@ -1,4 +1,4 @@
-import {fromEvent, map, pairwise, switchMap} from 'rxjs'
+import {fromEvent, map, pairwise, switchMap, takeUntil} from 'rxjs'
 
 export function Rxjs(selector: string) {
 
@@ -43,6 +43,9 @@ export function Rxjs(selector: string) {
     )
 
     mouseDown$.pipe(
-        switchMap(()=> points$)
+        switchMap(()=> points$.pipe(   //switchMap for switching to another observer
+            takeUntil(mouseOut$),
+            takeUntil(mouseUp$)
+        ))
     ).subscribe(drawLine)
 }
