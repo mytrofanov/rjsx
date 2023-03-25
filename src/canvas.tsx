@@ -9,7 +9,7 @@ const Canvas = () => {
 
     return (
         <div>
-            <canvas id="canvas" className="canvas"></canvas>
+            <canvas id="canvas" className="canvas" width={400} height={400}></canvas>
         </div>
     );
 };

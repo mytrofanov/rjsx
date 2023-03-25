@@ -33,9 +33,10 @@ export function Rxjs(selector: string) {
 
     const points$ = mouseMove$.pipe(
         map<MouseEvent, Position>(({clientX, clientY}) => {
+            const {top, left} = canvas.getBoundingClientRect()
             return {
-                x: clientX,
-                y: clientY,
+                x: clientX - left,
+                y: clientY - top,
             }
         }),
         pairwise<Position>()
